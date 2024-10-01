@@ -14,22 +14,4 @@ decomsize() { "$GEARLIB"/decomsize "$@"; }
 
 extract() { "$GEARLIB"/extract "$@"; }
 
-sysup.checkab() { "$GEARLIB"/sysup/checkab "$@"; }
-
-sysup.reinstall_patch() { "$GEARLIB"/sysup/reinstall_patch "$@"; }
-
-sysup.sysup_ab() { "$GEARLIB"/sysup/sysup_ab "$@"; }
-
-sysup.sysup_aonly() { "$GEARLIB"/sysup/sysup_aonly "$@"; }
-
-sysup.convert() { "$GEARLIB"/sysup/convert "$@"; }
-
-compat.flashablezip.install() { "$GEARLIB"/compat/flashablezip/install "$@"; }
-
-compat.flashablezip.convert() { "$GEARLIB"/compat/flashablezip/convert "$@"; }
-
-compat.gearlockgxp.convert() { "$GEARLIB"/compat/gearlockgxp/convert "$@"; }
-
-makepkg.genbuild() { "$GEARLIB"/makepkg/genbuild "$@"; }
-
-export -f checkfree decomsize extract sysup.checkab sysup.reinstall_patch sysup.sysup_ab sysup.sysup_aonly sysup.convert compat.flashablezip.install compat.flashablezip.convert compat.gearlockgxp.convert makepkg.genbuild
+export -f checkfree decomsize extract 
