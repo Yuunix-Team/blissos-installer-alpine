@@ -5,9 +5,11 @@ export PATH=/bin:/sbin:/usr/local/bin:/usr/bin:/usr/sbin
 cd /
 mkdir -p \
 	android \
-	boot \
-	var/gearlock/overlay \
-	data \
+	boot/grub \
+	boot/efi \
+	cdrom
+	
+for d in data \
 	data_mirror \
 	system \
 	storage \
@@ -17,11 +19,6 @@ mkdir -p \
 	debug_ramdisk \
 	system_ext \
 	product \
-	vendor
+	vendor; do ln -s /android/$d /$d; done
 
-echo "localhost" >/etc/hostname
-
-gpg --batch --passphrase "" --quick-gen-key "root@localhost" default default
-
-su root -c "abuild-keygen -qan"
-[ -f "/bin/busybox" ] && [ ! -h "/bin/busybox" ] && cp -t /usr/bin -f /bin/busybox
+for d in modules firmware; do ln -s /system/lib/$d /lib/$d; done

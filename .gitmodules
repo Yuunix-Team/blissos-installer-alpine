@@ -16,3 +16,6 @@
 [submodule "integrations/gearlock-kernel-pkg"]
 	path = integrations/gearlock-kernel-pkg
 	url = https://github.com/axonasif/gearlock-kernel-pkg
+[submodule "integrations/grub-config"]
+	path = integrations/grub-config
+	url = https://github.com/shadichy/grub-android-x86

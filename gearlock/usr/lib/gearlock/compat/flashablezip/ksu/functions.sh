@@ -1,1 +1,0 @@
-../../../../../../../integrations/kernelsu/userspace/ksud/src/installer.sh

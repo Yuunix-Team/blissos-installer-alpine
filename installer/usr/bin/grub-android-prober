@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[ "$EUID" = 0 ] ||
+  { echo "ERROR: Please run as root" && exit 1; }
+
+. /tmp/calamares-grub-current
+
+output=$(grub-android-prober-unprocessed)
+
+echo "$output" |
+  grep -v -a "$(echo "$output" | grep -a "$INS_DEVICE" | grep -a "$INS_SRC")"

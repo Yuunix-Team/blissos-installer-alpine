@@ -1,7 +1,0 @@
-#!/bin/bash
-
-install_hook() {
-  if grep -Eq '^ro.bliss' /system/build.prop; then
-    add_runscript
-  fi
-}
