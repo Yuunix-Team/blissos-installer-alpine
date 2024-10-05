@@ -14,12 +14,12 @@ options="!check !tracedeps"
 makedepends_host="bash busybox git"
 [ "${DEBUG#0}" ] || makedepends_host="$makedepends_host shfmt"
 makedepends="$makedepends_host"
+checkdepends="$makedepends"
 depends="
 	busybox-binsh
 	busybox>=1.28.2-r1
 	bash
 	"
-install="$pkgname.post-install"
 
 build() {
 	git submodule update --init

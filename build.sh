@@ -2,7 +2,7 @@
 
 mkdir -p build
 DISTRO=$1
-
+	
 declare -A DIST_EXCLUDE=(["alpine"]="etc/apk" ["arch"]="usr/share/libalpm" ["void"]="" ["debian"]="")
 
 EXCLUDES=""
