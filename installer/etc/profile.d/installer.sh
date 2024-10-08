@@ -3,7 +3,7 @@
 set -- $(cat /proc/cmdline)
 for arg in "$@"; do
 	case "$arg" in
-	*.*=*) eval "export $(echo "${arg%%=*}" | sed 's/\./__/g')='${arg#*=}'" ;;
+	*.*=*) eval "export $(echo "${arg%%=*}" | sed 's/\./__/g;s/-/_/g')='${arg#*=}'" ;;
 	*=*) eval "export ${arg%%=*}='${arg#*=}'" ;;
 	esac
 done
