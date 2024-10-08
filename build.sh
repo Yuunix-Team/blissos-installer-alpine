@@ -1,19 +1,9 @@
 #!/bin/bash
 
 mkdir -p build
-DISTRO=$1
-	
-declare -A DIST_EXCLUDE=(["alpine"]="etc/apk" ["arch"]="usr/share/libalpm" ["void"]="" ["debian"]="")
 
-EXCLUDES=""
-for dist in "${!DIST_EXCLUDE[@]}"; do
-	{ [ ! "${DIST_EXCLUDE["$dist"]}" ] || [ "$dist" = "$DISTRO" ]; } && continue
-	EXCLUDES="$EXCLUDES|${DIST_EXCLUDE["$dist"]}"
-done
-EXCLUDES=${EXCLUDES#|}
-
-FILELIST=$(find installer -mindepth 1 -type f | grep -Ev "$EXCLUDES")
-LINKLIST=$(find installer -mindepth 1 -type l | grep -Ev "$EXCLUDES")
+FILELIST=$(find installer -mindepth 1 -type f)
+LINKLIST=$(find installer -mindepth 1 -type l)
 
 while read -r file; do
 	header=$(head -1 "$file")

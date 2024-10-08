@@ -8,10 +8,10 @@ die() { echo "==> ERROR: $1" >&2 && quit "${2:-1}"; }
 # Override this if needed
 quit() { exit "$1"; }
 
-checkfree() { "$GEARLIB"/checkfree "$@"; }
+checkfree() { "$INSLIB"/checkfree "$@"; }
 
-decomsize() { "$GEARLIB"/decomsize "$@"; }
+decomsize() { "$INSLIB"/decomsize "$@"; }
 
-extract() { "$GEARLIB"/extract "$@"; }
+extract() { "$INSLIB"/extract "$@"; }
 
 export -f checkfree decomsize extract 

@@ -1,3 +1,3 @@
-# GearLock recovery project for Android on PC
+# BlissOS installer data
 
 This is only the core components

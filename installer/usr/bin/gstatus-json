@@ -2,7 +2,8 @@
 
 OLD_PATH=$PATH
 
-export PATH="/data/adb/gearlock/bin/:$PATH"
+ANDROID_PATH=/system/bin:/system/bin:/product/bin:/vendor/bin
+export PATH="/bin/:/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:$ANDROID_PATH"
 
 for src in /etc/os-release /etc/lsb-release /usr/lib/lsb-release; do
 	[ -e "$src" ] && . "$src" && break
@@ -24,10 +25,6 @@ fi
 
 echo "
 {
-	\"gearlock\": {
-		\"version\": \"$(gearlock -v)\",
-		\"chroot\": \"${PRETTY_NAME:-"$NAME ${VERSION_ID:-$BUILD_ID}"}\"
-	},
 	\"android\": {
 		\"release\": \"$(getprop ro.build.version.release)\",
 		\"sdkInt\": \"$(getprop ro.build.version.sdk)\",

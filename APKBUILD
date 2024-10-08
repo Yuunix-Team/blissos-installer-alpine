@@ -1,20 +1,24 @@
 # Maintainer: Shadichy <shadichy.dev@gmail.com>
 
-pkgname=blissos-installer
+pkgname=blissos-installer-data
 pkgver=0.0.1
 # shellcheck disable=SC2034 # used for git versions, keep around for next time
-_ver=${pkgver%_git*}_compat7.3.15
-pkgrel=1
-pkgdesc="GearLock recovery project for Android on PC"
+pkgrel=2
+pkgdesc="BlissOS calamares installer data"
 url="https://github.com/Yuunix-Team/blissos-installer-alpine.git"
-arch="all"
+arch="noarch"
 license="GPL-2.0-only"
+
 # currently we do not ship any testsuite
 options="!check !tracedeps"
-makedepends_host="bash busybox git"
+
+provides="blissos-installer"
+
+makedepends_host="git"
 [ "${DEBUG#0}" ] || makedepends_host="$makedepends_host shfmt"
 makedepends="$makedepends_host"
 checkdepends="$makedepends"
+
 depends="
 	busybox-binsh
 	busybox>=1.28.2-r1
@@ -23,7 +27,7 @@ depends="
 
 build() {
 	git submodule update --init
-	./build.sh alpine
+	./build.sh
 }
 
 package() {

@@ -3,10 +3,9 @@
 OLD_PATH=$PATH
 
 ANDROID_PATH=/system/bin:/system/bin:/product/bin:/vendor/bin
-export PATH="/bin/:/sbin:/usr/local/bin:/usr/bin:$ANDROID_PATH"
+export PATH="/bin/:/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:$ANDROID_PATH"
 
 declare -A keyterms=(
-	["0 gearlock"]="version chroot"
 	["1 android"]="release sdkInt buildNo suHandler gmsPrvd armLayer mac"
 	["2 graphic"]="resolution dpi glVendor glRenderer glVersion"
 	["3 kernel"]="version build arch uptime"
@@ -17,18 +16,6 @@ declare -A keyterms=(
 )
 
 ARCH="$(busybox arch)"
-
-gearlock.version() {
-	apk version --no-network --force-non-repository gearlock-core |
-		tail -1 | awk '{print $1}' | sed 's/gearlock-core-//g'
-}
-
-gearlock.chroot() {
-	for src in /etc/os-release /etc/lsb-release /usr/lib/lsb-release; do
-		[ -e "$src" ] && . "$src" && break
-	done
-	printf "%s" "${PRETTY_NAME:-"$NAME ${VERSION_ID:-$BUILD_ID}"}"
-}
 
 android.release() { getprop ro.build.version.release; }
 
@@ -140,7 +127,7 @@ hw.bios() {
 
 for keyterm in "${!keyterms[@]}"; do
 	for key in ${keyterms["$keyterm"]}; do
-		printf "%s=%s\n" "${keyterm#* }.$key" "$("${keyterm#* }.$key")"
+		printf "%s=%s\n" "${keyterm#* }.$key" "$(eval "${keyterm#* }.$key")"
 	done | tac
 done | tac
 
