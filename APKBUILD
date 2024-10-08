@@ -6,7 +6,7 @@ pkgver=0.0.1
 pkgrel=2
 pkgdesc="BlissOS calamares installer data"
 url="https://github.com/Yuunix-Team/blissos-installer-alpine.git"
-arch="noarch"
+arch="all"
 license="GPL-2.0-only"
 
 # currently we do not ship any testsuite
